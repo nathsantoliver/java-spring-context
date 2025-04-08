@@ -1,14 +1,19 @@
 package main;
 
+import config.ProjectConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
 
     public static void main(String[] args) {
         // creates ann instance of the Spring context
-        var context = new AnnotationConfigApplicationContext();
+        // sending the configuration class as a parameter to instruct Spring to use it
+        var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
 
-        Parrot p = new Parrot();
+        // Gets a reference of a bean of type Parrot from the Spring context
+        Parrot p = context.getBean(Parrot.class);
+
+        System.out.println(p.getName());
     }
 
 }
