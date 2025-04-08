@@ -3,6 +3,8 @@ package main;
 import config.ProjectConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.function.Supplier;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -10,18 +12,38 @@ public class Main {
         // sending the configuration class as a parameter to instruct Spring to use it
         var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
 
+        Parrot x = new Parrot();    // create the instance we want to add to the Spring context
+        x.setName("Kiki");
+
+        Supplier<Parrot> parrotSupplier = () -> x;  // define a Supplier to return this instance
+
+        // call the registerBean() method to add the instance to the Spring context
+        context.registerBean(
+                "parrot1",
+                Parrot.class,
+                parrotSupplier,
+                bc -> bc.setPrimary(true)
+        );
+
+        // to verify the bean is now in the context,
+        // we refer to the parrot bean and print its name in the console
+        Parrot p = context.getBean(Parrot.class);
+        System.out.println(p.getName());
+
+/*
         // Gets a reference of a bean of type Parrot from the Spring context
         Parrot p = context.getBean(Parrot.class);   //
         // prints the default String representation of the instance taken from the Spring context
         System.out.println(p);
         // prints null because we did not assign any name to the parrot instance added by Spring in its context
-        System.out.println(p.getName());
+        System.out.println(p.getName());*/
 
+/*
 //        String s = context.getBean(String.class);
 //        System.out.println(s);
 
 //        Integer n = context.getBean(Integer.class);
-//        System.out.println(n);
+//        System.out.println(n);*/
     }
 
 }
