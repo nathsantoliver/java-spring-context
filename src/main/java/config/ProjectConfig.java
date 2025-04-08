@@ -18,4 +18,14 @@ public class ProjectConfig {
         return p;   // Spring adds to its context the Parrot instance returned by the method
     }
 
+    @Bean
+    String hello() {    // adds the string "Hello" to the Spring context
+        return "Hello";
+    }
+
+    @Bean
+    Integer ten() {     // adds the integer 10 to the Spring context
+        return 10;
+    }
+
 }
