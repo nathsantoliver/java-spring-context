@@ -11,7 +11,10 @@ public class Main {
         var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
 
         // Gets a reference of a bean of type Parrot from the Spring context
-        Parrot p = context.getBean("parrot2", Parrot.class);   //
+        Parrot p = context.getBean(Parrot.class);   //
+        // prints the default String representation of the instance taken from the Spring context
+        System.out.println(p);
+        // prints null because we did not assign any name to the parrot instance added by Spring in its context
         System.out.println(p.getName());
 
 //        String s = context.getBean(String.class);
