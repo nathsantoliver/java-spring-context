@@ -2,14 +2,17 @@ package config;
 
 import main.Parrot;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 // we use the @Configuration annotation to define this class
 // as a Spring configuration class.
 @Configuration
+@ComponentScan(basePackages = "main")
 public class ProjectConfig {
 
+    /*
     // By adding the @Bean annotation, we instruct Spring to call this method
     // when at context initialization and add the returned value to the context.
     @Bean(value = "koko")
@@ -34,7 +37,6 @@ public class ProjectConfig {
         return p;
     }
 
-    /*
     @Bean
     String hello() {    // adds the string "Hello" to the Spring context
         return "Hello";
