@@ -1,6 +1,6 @@
 # Spring Context
 
-Java Spring project related to the 2nd chapter of the book [Spring Start Here](https://livebook.manning.com/book/spring-start-here), about ...
+Java Spring project related to the 2nd chapter of the book [Spring Start Here](https://livebook.manning.com/book/spring-start-here).
 
 ![Spring Start Here Cover](img/cover.png)
 
